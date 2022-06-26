@@ -6,6 +6,7 @@ services:
       POSTGRES_USER: amigoscode
       POSTGRES_PASSWORD: password
       PGDATA: /data/postgres
+      POSTGRES_HOST_AUTH_METHOD: trust
     volumes:
       - postgres:/data/postgres
     ports:
@@ -28,6 +29,8 @@ services:
       - postgres
     restart: unless-stopped
 
+
+
 networks:
   postgres:
     driver: bridge
@@ -37,5 +40,3 @@ networks:
 volumes:
   postgres:
   pgadmin:
-
-

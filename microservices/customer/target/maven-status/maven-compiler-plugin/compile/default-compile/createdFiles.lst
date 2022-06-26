@@ -1,3 +1,4 @@
+com\microservice\customer\CustomerRepository.class
 com\microservice\customer\CustomerController.class
 com\microservice\customer\CustomerRegistrationRequest.class
 com\microservice\customer\Customer$CustomerBuilder.class
