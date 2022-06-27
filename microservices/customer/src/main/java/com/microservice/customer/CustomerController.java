@@ -1,10 +1,11 @@
 package com.microservice.customer;
 
+import com.sun.xml.bind.v2.model.core.ID;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.UUID;
 
 @Slf4j
 // this is the controller of the project, as you know spring has mvc structure and controller is responsible for api operations
@@ -19,4 +20,18 @@ public record CustomerController(CustomerService customerService) {
         log.info("customer registration{} ", customerRequest);
         customerService.registerCustomer(customerRequest);
     }
+
+    @GetMapping
+    public List<Customer> getAllCustomers() {
+        return customerService.getAllCustomers();
+    }
+
+    @DeleteMapping(path = "{id}")
+    public void getAllPeople(@PathVariable("id") Integer id) {
+        customerService.deleteCustomer(id);
+    }
+//    @GetMapping(path = "{id}")
+//    public Optional<Person> getPersonById(@PathVariable("id") UUID id) {
+//        return Optional.ofNullable(personService.getPersonById(id).orElse(null));
+//    }
 }
