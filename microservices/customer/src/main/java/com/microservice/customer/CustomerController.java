@@ -30,6 +30,11 @@ public record CustomerController(CustomerService customerService) {
     public void getAllPeople(@PathVariable("id") Integer id) {
         customerService.deleteCustomer(id);
     }
+
+    @PutMapping(path = "{id}")
+    public void updateCustomer(@PathVariable("id") Integer id, @RequestBody CustomerRegistrationRequest customerRequest) {
+        customerService.updateCustomer(id, customerRequest);
+    }
 //    @GetMapping(path = "{id}")
 //    public Optional<Person> getPersonById(@PathVariable("id") UUID id) {
 //        return Optional.ofNullable(personService.getPersonById(id).orElse(null));

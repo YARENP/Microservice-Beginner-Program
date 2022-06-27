@@ -25,10 +25,21 @@ public class Customer {
 //            strategy = GenerationType.SEQUENCE,
 //            generator = "customer_id_sequence"
 //    )
+//    @Id
+//    @GeneratedValue(generator = "system-uuid")
+//    @GenericGenerator(name = "system-uuid", strategy = "uuid")
+//    private String Id;
+
     @Id
-    @GeneratedValue(generator = "system-uuid")
-    @GenericGenerator(name = "system-uuid", strategy = "uuid")
-    private String Id;
+    @SequenceGenerator(
+            name = "customer_id_sequence",
+            sequenceName = "customer_id_sequence"
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "customer_id_sequence"
+    )
+    private Integer id;
 
     private String firstName;
     private String lastName;
